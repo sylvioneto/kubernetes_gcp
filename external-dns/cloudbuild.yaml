@@ -1,0 +1,42 @@
+steps:
+# Build Helm Image
+- id: git-clone
+  name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/GoogleCloudPlatform/cloud-builders-community']
+
+- id: build-helm
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/helm', 'helm']
+  dir: cloud-builders-community
+  
+- id: test-helm
+  name: 'gcr.io/$PROJECT_ID/helm:latest'
+  args: ['version', '--client']
+  env:
+    - SKIP_CLUSTER_CONFIG=true
+
+# Kubernetes deployment
+- id: create-namespace
+  name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'namespace.yaml']
+
+- id: helm-install
+  name: 'gcr.io/$PROJECT_ID/helm:latest'
+  args: ['upgrade', '--install', 'external-dns', 'bitnami/external-dns',
+   '--version', '4.5.0', 
+   '--namespace', 'external-dns',
+   '-f', 'kubernetes/external-dns.yaml',
+  ]
+  env:
+  - 'HELM_REPO_NAME=jenkinsci'
+  - 'HELM_REPO_URL=https://charts.jenkins.io'
+
+options:
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=$_GKE_REGION'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
+
+tags:
+- gke
+- helm
+- jenkins
