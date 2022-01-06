@@ -23,7 +23,7 @@ steps:
 - id: helm-install
   name: 'gcr.io/$PROJECT_ID/helm:latest'
   args: ['upgrade', '--install', 'jenkins', '--namespace', 'jenkins',
-  'jenkinsci/jenkins', '--version', '3.8.9', 
+  'jenkinsci/jenkins', '--version', '3.10.2', 
    '-f', 'jenkins.yaml'
   ]
   env:
