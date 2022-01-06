@@ -20,7 +20,7 @@ persistence:
 
 serviceAccount:
   annotations:
-    iam.gke.io/gcp-service-account: "jenkins@{{PROJECT_ID}}.iam.gserviceaccount.com"
+    iam.gke.io/gcp-service-account: "jenkins@<PROJECT_ID>.iam.gserviceaccount.com"
 
 agent:
   resources:

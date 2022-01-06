@@ -24,8 +24,7 @@ steps:
   name: 'gcr.io/$PROJECT_ID/helm:latest'
   args: ['upgrade', '--install', 'jenkins', '--namespace', 'jenkins',
   'jenkinsci/jenkins', '--version', '3.8.9', 
-   '-f', 'jenkins.yaml', 
-   '--set', "serviceAccount.annotations.iam.gke.io/gcp-service-account=jenkins@$PROJECT_ID.iam.gserviceaccount.com"
+   '-f', 'jenkins.yaml'
   ]
   env:
   - 'HELM_REPO_NAME=jenkinsci'
