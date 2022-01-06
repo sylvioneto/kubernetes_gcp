@@ -11,7 +11,7 @@ controller:
     annotations:
       kubernetes.io/ingress.class: nginx
       kubernetes.io/tls-acme: "true"
-    hostName: jenkins.<YOUR-DOMAIN>
+    hostName: jenkins.example.com
 
 persistence:
   enabled: true
@@ -20,7 +20,7 @@ persistence:
 
 serviceAccount:
   annotations:
-    iam.gke.io/gcp-service-account: jenkins@<YOUR_PROJECT_ID>.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: jenkins@{{PROJECT_NUMBER}}.iam.gserviceaccount.com
 
 agent:
   resources:
