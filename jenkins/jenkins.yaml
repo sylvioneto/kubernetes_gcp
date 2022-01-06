@@ -3,8 +3,7 @@ controller:
   # Consider using a custom jenkins image with the plugins already installed
   # Ref https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins#consider-using-a-custom-image
   image: jenkins/jenkins
-  tag: 2.303.3-jdk11
-  installPlugins: false
+  tag: "2.319.1"
   JCasC:
     configScripts:
       welcome-message: |
