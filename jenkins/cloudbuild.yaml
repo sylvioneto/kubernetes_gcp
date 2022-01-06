@@ -25,7 +25,7 @@ steps:
   args: ['upgrade', '--install', 'jenkins', '--namespace', 'jenkins',
   'jenkinsci/jenkins', '--version', '3.8.9', 
    '-f', 'jenkins.yaml', 
-   '--set-values', "serviceAccount.annotations.iam.gke.io/gcp-service-account=jenkins@$PROJECT_ID.iam.gserviceaccount.com"
+   '--set', "serviceAccount.annotations.iam.gke.io/gcp-service-account=jenkins@$PROJECT_ID.iam.gserviceaccount.com"
   ]
   env:
   - 'HELM_REPO_NAME=jenkinsci'
