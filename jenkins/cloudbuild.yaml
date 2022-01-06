@@ -20,15 +20,6 @@ steps:
   name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'namespace.yaml']
 
-- id: create-cluster-role-binding
-  name: 'gcr.io/cloud-builders/kubectl'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - | 
-    sed "s/{{PROJECT_NUMBER}}/$PROJECT_NUMBER/g" rbac.yaml
-    kubectl apply -f rbac.yaml
-
 - id: helm-install
   name: 'gcr.io/$PROJECT_ID/helm:latest'
   args: ['upgrade', '--install', 'jenkins', '--namespace', 'jenkins',
