@@ -25,11 +25,11 @@ steps:
   args: ['upgrade', '--install', 'external-dns', 'bitnami/external-dns',
    '--version', '4.5.0', 
    '--namespace', 'external-dns',
-   '-f', 'kubernetes/external-dns.yaml',
+   '-f', 'external-dns.yaml',
   ]
   env:
-  - 'HELM_REPO_NAME=jenkinsci'
-  - 'HELM_REPO_URL=https://charts.jenkins.io'
+  - 'HELM_REPO_NAME=bitnami'
+  - 'HELM_REPO_URL=https://charts.bitnami.com/bitnami'
 
 options:
   env:
