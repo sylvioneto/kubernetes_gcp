@@ -11,14 +11,14 @@ You must have a GKE cluster ready to received deployments. In case you don't hav
 ## Deploy
 1. Ensure your gcloud is set to the right project.
 ````
-$ gcloud config list
+gcloud config list
 ````
 
 2. Deploy NGINX with Cloud Build informing the cluster's name and region, for example:
 ```
-$ gcloud builds submit . \
-    --config cloudbuild.yaml \
-    --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=gke-dev"
+gcloud builds submit . \
+  --config cloudbuild.yaml \
+  --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=gke-dev"
 ```
 
 ## Known-issues
