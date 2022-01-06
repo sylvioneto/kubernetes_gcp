@@ -36,9 +36,11 @@ $ gcloud iam service-accounts add-iam-policy-binding jenkins@$GCP_PROJECT_ID.iam
     --member "serviceAccount:$GCP_PROJECT_ID.svc.id.goog[jenkins/jenkins]"
 ```
 
-6. Deploy Jenkins informing the cluster's name and region.
+6. Edit the [jenkins.yaml](./jenkins.yaml) file according to your DNS and project settings.
+
+7. Deploy Jenkins informing the cluster's name and region, for example:
 ```
 $ gcloud builds submit . \
     --config cloudbuild.yaml \
-    --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=<CLUSTER_NAME>"
+    --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=gke-dev"
 ```
