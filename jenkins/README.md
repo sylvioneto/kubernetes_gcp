@@ -36,10 +36,9 @@ $ gcloud iam service-accounts add-iam-policy-binding jenkins@$GCP_PROJECT_ID.iam
     --member "serviceAccount:$GCP_PROJECT_ID.svc.id.goog[jenkins/jenkins]"
 ```
 
-6. Deploy Jenkins
+6. Deploy Jenkins informing the cluster's name and region.
 ```
-$ gcloud builds submit . --config cloudbuild.yaml --project $GCP_PROJECT_ID
+$ gcloud builds submit . \
+    --config cloudbuild.yaml \
+    --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=<CLUSTER_NAME>"
 ```
-
-## Destroy
-Uncomment the `tf destroy` step in the cloudbuild.yaml file, and trigger the deployment again.
