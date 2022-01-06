@@ -1,0 +1,42 @@
+steps:
+# Build Helm Image
+- id: git-clone
+  name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/GoogleCloudPlatform/cloud-builders-community']
+
+- id: build-helm
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/helm', 'helm']
+  dir: cloud-builders-community
+  
+- id: test-helm
+  name: 'gcr.io/$PROJECT_ID/helm:latest'
+  args: ['version', '--client']
+  env:
+    - SKIP_CLUSTER_CONFIG=true
+
+# Kubernetes deployment
+- id: create-namespace
+  name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'namespace.yaml']
+
+- id: deploy-ingress-nginx
+  name: 'gcr.io/$PROJECT_ID/helm:latest'
+  args: ['upgrade', '--install', 'ingress-nginx', 'ingress-nginx/ingress-nginx',
+   '--version', '4.0.10', 
+   '--namespace', 'nginx',
+   '-f', 'kubernetes/ingress-nginx.yaml',
+  ]
+  env:
+  - 'HELM_REPO_NAME=ingress-nginx'
+  - 'HELM_REPO_URL=https://kubernetes.github.io/ingress-nginx'
+
+options:
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=$_GKE_REGION'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
+
+tags:
+- gke
+- helm
+- jenkins
