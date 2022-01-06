@@ -5,7 +5,7 @@ metadata:
 subjects:
 # IAM service account
 - kind: User
-  name: {{PROJECT_NUMBER}}@cloudbuild.gserviceaccount.com
+  name: "{{PROJECT_NUMBER}}@cloudbuild.gserviceaccount.com"
 roleRef:
   kind: ClusterRole
   name: cluster-admin
