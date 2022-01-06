@@ -44,3 +44,6 @@ $ gcloud builds submit . \
     --config cloudbuild.yaml \
     --substitutions="_GKE_REGION=us-central1","_GKE_CLUSTER=gke-dev"
 ```
+
+## Known-issues
+Access Denied: If you get access denied during the deployment, please review Cloud Build's service account permissions to make sure it can deploy to the cluster.
