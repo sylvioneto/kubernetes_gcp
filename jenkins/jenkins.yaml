@@ -1,5 +1,10 @@
-# Ref https://github.com/jenkinsci/helm-charts/blob/26affd02465f7ef444967b0528142a6cd6b9642a/charts/jenkins/VALUES_SUMMARY.md
+# Ref https://github.com/jenkinsci/helm-charts/
 controller:
+  # Consider using a custom jenkins image with the plugins already installed
+  # Ref https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins#consider-using-a-custom-image
+  image: jenkins/jenkins
+  tag: 2.303.3-jdk11
+  installPlugins: false
   JCasC:
     configScripts:
       welcome-message: |
