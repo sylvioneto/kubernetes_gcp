@@ -26,8 +26,7 @@ steps:
   args: 
   - '-c'
   - | 
-    cat "rbac.yaml" | sed "s/{{PROJECT_NUMBER}}/$PROJECT_NUMBER/g" > rbac.yaml
-    echo $PROJECT_NUMBER
+    sed "s/{{PROJECT_NUMBER}}/$PROJECT_NUMBER/g" rbac.yaml
     kubectl apply -f rbac.yaml
 
 - id: helm-install
