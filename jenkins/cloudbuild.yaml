@@ -34,3 +34,8 @@ options:
   env:
   - 'CLOUDSDK_COMPUTE_REGION=$_GKE_REGION'
   - 'CLOUDSDK_CONTAINER_CLUSTER=$_GKE_CLUSTER'
+
+tags:
+- gke
+- helm
+- jenkins
