@@ -6,5 +6,4 @@ All deployments examples in this repo are managed with Helm Charts, so it is hig
 # Example of deployments
 - [external-dns](external-dns)
 - [jenkins](jenkins)
-- [ingress-nginx](ingress-nginx)
-- 
+- [nginx](nginx)
