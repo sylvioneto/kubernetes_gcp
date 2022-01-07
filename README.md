@@ -1,6 +1,6 @@
 # kubernetes_gcp
 
-These examples how to deploy very popular application on GKE using Cloud Build.
+These examples demonstrate how to deploy very popular applications such as Nginx and Jenkins on GKE using Cloud Build.
 
 ## Pre-req
 Be familiar with:
