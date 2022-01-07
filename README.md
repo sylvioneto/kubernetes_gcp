@@ -1,7 +1,11 @@
 # kubernetes_gcp
-Examples of deployments on GKE.
 
-All deployments examples in this repo are managed with Helm Charts, so it is high recommended to take a look at [Helm's doc](https://helm.sh/docs/) to get familiar with it.
+This repo contains examples of deployments on GKE using Cloud Build.
+
+# Pre-req
+Be familiar with:
+- [Cloud Build](https://cloud.google.com/build/): Google Cloud serverless CI/CD solution.
+- [Helm's doc](https://helm.sh/): The package manager for Kubernetes.
 
 # Example of deployments
 - [external-dns](external-dns)
